@@ -16,7 +16,7 @@ const titillium = Titillium_Web({
 });
 
 export const metadata: Metadata = {
-  title: "Komikgan",
+  title: "Komikku",
   description: "Baca Komik Bahasa Indonesia",
 };
 
