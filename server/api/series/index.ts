@@ -369,6 +369,7 @@ const series = new Hono<{
       if (!serie) {
         throw new InvariantError("Serie not found");
       }
+      console.log(serie)
 
       const deletedSerie = await prisma.serie.delete({ where: { id } });
 
