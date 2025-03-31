@@ -371,7 +371,7 @@ const series = new Hono<{
       }
       console.log(serie)
 
-      const deletedSerie = await prisma.serie.delete({ where: { id } });
+      const deletedSerie = await prisma.serie.delete({ where: { id : serie.id } });
 
       return c.json(deletedSerie);
     }
