@@ -62,9 +62,14 @@ model Serie {
 
   userId   String
   user     User      @relation(fields: [userId], references: [id])
-  genres   Genre[]
-  chapters Chapter[]
-  bookmarks Bookmark[]
+  
+  genres   Genre[]         @relation(references: [id], onDelete: Cascade)
+  chapters Chapter[]       @relation(references: [id], onDelete: Cascade)
+  bookmarks Bookmark[]     @relation(references: [id], onDelete: Cascade)
+
+ // genres   Genre[]
+ // chapters Chapter[]
+//  bookmarks Bookmark[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
