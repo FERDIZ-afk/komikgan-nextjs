@@ -63,13 +63,13 @@ model Serie {
   userId   String
   user     User      @relation(fields: [userId], references: [id])
   
-  genres   Genre[]         @relation(references: [id], onDelete: Cascade)
-  chapters Chapter[]       @relation(references: [id], onDelete: Cascade)
-  bookmarks Bookmark[]     @relation(references: [id], onDelete: Cascade)
+//  genres   Genre[]         @relation(references: [id], onDelete: Cascade)
+//  chapters Chapter[]       @relation(references: [id], onDelete: Cascade)
+//  bookmarks Bookmark[]     @relation(references: [id], onDelete: Cascade)
 
- // genres   Genre[]
- // chapters Chapter[]
-//  bookmarks Bookmark[]
+  genres   Genre[]
+  chapters Chapter[]
+  bookmarks Bookmark[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -95,7 +95,8 @@ model Chapter {
   postStatus    PostStatus
 
   serieId Int
-  serie   Serie  @relation(fields: [serieId], references: [id])
+  serie   Serie  @relation(fields: [serieId], references: [id], onDelete: Cascade)
+
   userId  String
   user    User   @relation(fields: [userId], references: [id])
 
@@ -103,11 +104,12 @@ model Chapter {
   updatedAt DateTime @updatedAt
 }
 
+
 model Bookmark {
   id        Int    @id @default(autoincrement())
   serieId   Int
   userid    String
 
-  serie     Serie  @relation(fields: [serieId], references: [id])
-  user      User   @relation(fields: [userid], references: [id])
+  serie     Serie  @relation(fields: [serieId], references: [id], onDelete: Cascade)
+  user      User   @relation(fields: [userid], references: [id], onDelete: Cascade)
 }
